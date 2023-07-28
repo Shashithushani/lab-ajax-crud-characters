@@ -1,25 +1,40 @@
+const axios = require("axios");
+
 class APIHandler {
-  constructor (baseUrl) {
+  constructor(baseUrl) {
     this.BASE_URL = baseUrl;
   }
 
-  getFullList () {
-
+  async getFullList() {
+    return await axios.get(`${this.BASE_URL}/characters`);
   }
 
-  getOneRegister () {
-
+  async getOneRegister(id) {
+    return await axios.get(`${this.BASE_URL}/characters/${id}`);
   }
 
-  createOneRegister () {
-
+  async createOneRegister(newCharacter) {
+    return await axios.post(`${this.BASE_URL}/characters`, newCharacter);
   }
 
-  updateOneRegister () {
-
+  async updateOneRegister(id, updateInfo) {
+    return await axios.patch(`${this.BASE_URL}/characters ${id}`, updateInfo);
   }
 
-  deleteOneRegister () {
-
+  async deleteOneRegister(id) {
+    return await axios.delete(`${this.BASE_URL}/characters/${id}`);
   }
 }
+// function card(props) {
+//   const { id, name, occupation, isCartoon, weapon } = props;
+//   return (
+//     <div>
+//       <p> Id : {id}</p>
+//       <p>Name : {name}</p>
+//       <p>Occupation : {occupation}</p>
+//       <p>Is a Cartoon? : {isCartoon}</p>
+//       <p>Weapon : {weapon}</p>
+//     </div>
+//   );
+// }
+// module.exports = APIHandler;
